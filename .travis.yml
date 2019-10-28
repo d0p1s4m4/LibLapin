@@ -1,0 +1,16 @@
+language: cpp
+dist: bionic
+sudo: required
+compiler:
+  - clang
+  - gcc
+
+before_install:
+  - sudo apt update
+  - sudo apt install -y libsfml-dev libopencv-dev libusb-dev libffcall-dev
+  - export COMPILER=$CXX
+
+script:
+  - make
+  - cat errors/*
+  - cd tests && ./browse.bash
